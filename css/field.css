@@ -12,23 +12,20 @@ a,a:hover,a:link,a:visited{text-decoration:none}a,abbr,acronym,address,applet,ar
 }
 
 body{
-    /*background: url("../дизайн/01_view.png") no-repeat;*/
-    /*background-size: auto;*/
-    /*width: 477px;*/
-    /*height: 545px;*/
-
-}
-
-body > *{
-    opacity: 0.8;
-}
-
-.field{
     padding: 103px 102px;
 }
 
+body > *{
+    /*opacity: 0.8;*/
+}
+
+.field{
+    /*padding: 103px 102px;*/
+    display: inline-block;
+}
+
 .field__field-control-panel{
-    display: block;
+    display: inline-block;
     width: auto;
     height: auto;
     padding: var(--size-min-padding) calc(var(--size-min-padding) + var(--size-main-border));
@@ -36,9 +33,13 @@ body > *{
 
 .field__field-view-panel{
     width: 208px;
-    height: 204px;
+    /*height: 204px;*/
     border: var(--size-main-border) solid var(--main-color);
-    padding: var(--size-min-padding);
+    padding: var(--size-min-padding) 0 0 var(--size-min-padding);
+    /*display: inline-block;*/
+
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .field__field-square{
@@ -50,56 +51,45 @@ body > *{
     margin: 0;
     outline: 0;
     border: 0;
+
+    margin-right: 3px;
+    margin-bottom: 2px;
 }
 
-.field__field-square_control-delete-row{
-    background-color: var(--delete-color);
+.field__field-square-control{
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 30px;
     color: #fff;
-    margin-left: 105px;
     transition: opacity 0.3s;
+    /*z-index: 10;*/
+}
+
+.field__field-square_control-delete-row {
+    margin-left: 105px;
+    background-color: var(--delete-color);
 }
 
 .field__field-square_control-delete-column{
-    background-color: var(--delete-color);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 30px;
-    color: #fff;
-    transition: opacity 0.3s;
     position: absolute;
     margin-left: -53px;
     margin-top: 5px;
+    background-color: var(--delete-color);
 }
 
 .field__field-square_control-add-row{
-    background-color: var(--add-color);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 30px;
-    color: #fff;
-    transition: opacity 0.3s;
     position: absolute;
     margin-left: 212px;
     margin-top: 5px;
+    background-color: var(--add-color);
 }
 
 .field__field-square_control-add-column{
-    background-color: var(--add-color);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 30px;
-    color: #fff;
-    transition: opacity 0.3s;
     position: absolute;
     margin-left: 0;
-    margin-top: 214px;
+    margin-top: 213px;
+    background-color: var(--add-color);
 }
 
 .field__field-square_control-delete-row:hover,
