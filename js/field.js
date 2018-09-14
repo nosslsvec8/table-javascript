@@ -19,8 +19,6 @@ class Field{
     constructor(initialColumn, initialRow){
         this._column = initialColumn;
         this._row = initialRow;
-        this._updateWidth = 0;
-        this._positioAddColumn = 0;
         this.updateField();
     }
 
@@ -29,12 +27,10 @@ class Field{
         Div.className = "field__field-square";
         let is = document.getElementsByClassName("field__field-view-panel")[0];
         is.appendChild(Div);
-        console.log("+++");
     }
 
     deleteElement(){
         document.getElementsByClassName("field__field-view-panel")[0].lastChild.remove();
-        console.log("---");
     }
 
     addColumn(){
