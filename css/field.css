@@ -15,12 +15,7 @@ body{
     padding: 103px 102px;
 }
 
-body > *{
-    /*opacity: 0.8;*/
-}
-
 .field{
-    /*padding: 103px 102px;*/
     display: inline-block;
 }
 
@@ -33,11 +28,8 @@ body > *{
 
 .field__field-view-panel{
     width: 208px;
-    /*height: 204px;*/
     border: var(--size-main-border) solid var(--main-color);
     padding: var(--size-min-padding) 0 0 var(--size-min-padding);
-    /*display: inline-block;*/
-
     display: flex;
     flex-wrap: wrap;
 }
@@ -48,12 +40,9 @@ body > *{
     background-color: var(--main-color);
     display: inline-block;
     padding: 0;
-    margin: 0;
+    margin: 0 3px 2px 0;
     outline: 0;
     border: 0;
-
-    margin-right: 3px;
-    margin-bottom: 2px;
 }
 
 .field__field-square-control{
@@ -63,7 +52,22 @@ body > *{
     font-size: 30px;
     color: #fff;
     transition: opacity 0.3s;
-    /*z-index: 10;*/
+}
+
+.field__field-square_control-delete-column,
+.field__field-square_control-delete-row,
+.field__field-square_control-delete-column,
+.field__field-square_control-delete-row{
+    visibility: hidden;
+    transition: visibility 0.1s;
+}
+
+.field:hover .field__field-square_control-delete-column,
+.field:hover .field__field-square_control-delete-row,
+.field:focus .field__field-square_control-delete-column,
+.field:focus .field__field-square_control-delete-row{
+    visibility: visible;
+    transition: visibility 0.1s;
 }
 
 .field__field-square_control-delete-column {
@@ -99,14 +103,6 @@ body > *{
     cursor: pointer;
     opacity: 0.8;
     transition: opacity 0.3s;
-    outline: var(--size-min-padding) solid var(--main-color);
-
-}
-
-.field__field-square_control-delete-row:active,
-.field__field-square_control-delete-row:focus,
-.field__field-square_control-delete-row:visited,
-.field__field-square_control-delete-row:focus-within{
     outline: var(--size-min-padding) solid var(--main-color);
 }
 
