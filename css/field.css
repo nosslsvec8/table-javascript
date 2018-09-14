@@ -28,7 +28,7 @@ body > *{
     display: inline-block;
     width: auto;
     height: auto;
-    padding: var(--size-min-padding) calc(var(--size-min-padding) + var(--size-main-border));
+    padding: 0 calc(var(--size-min-padding) + var(--size-main-border));
 }
 
 .field__field-view-panel{
@@ -66,26 +66,26 @@ body > *{
     /*z-index: 10;*/
 }
 
-.field__field-square_control-delete-row {
+.field__field-square_control-delete-column {
     margin-left: 105px;
     background-color: var(--delete-color);
 }
 
-.field__field-square_control-delete-column{
+.field__field-square_control-delete-row{
     position: absolute;
     margin-left: -53px;
     margin-top: 5px;
     background-color: var(--delete-color);
 }
 
-.field__field-square_control-add-row{
+.field__field-square_control-add-column{
     position: absolute;
     margin-left: 212px;
     margin-top: 5px;
     background-color: var(--add-color);
 }
 
-.field__field-square_control-add-column{
+.field__field-square_control-add-row{
     position: absolute;
     margin-left: 0;
     margin-top: 213px;
