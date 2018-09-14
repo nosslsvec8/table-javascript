@@ -34,7 +34,7 @@ class Field{
 
     shiftRow(number){
         number++;
-        number = Math.ceil( number / this._row );
+        number = Math.ceil( number / this._column );
         number--;
         document.getElementsByClassName("field__field-square_control-delete-row")[0].style.marginTop = number * this._sizeSquare + number * 3 + 3 + "px";
     }
