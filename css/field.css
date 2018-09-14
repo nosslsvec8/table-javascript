@@ -58,7 +58,7 @@ body{
 .field__field-square_control-delete-row,
 .field__field-square_control-delete-column,
 .field__field-square_control-delete-row{
-    /*visibility: hidden;*/
+    visibility: hidden;
     transition: visibility 0.1s;
 }
 
@@ -78,14 +78,14 @@ body{
 .field__field-square_control-delete-row{
     position: absolute;
     margin-left: -53px;
-    margin-top: 5px;
+    margin-top: 3px;
     background-color: var(--delete-color);
 }
 
 .field__field-square_control-add-column{
     position: absolute;
     margin-left: 212px;
-    margin-top: 5px;
+    margin-top: 3px;
     background-color: var(--add-color);
 }
 
