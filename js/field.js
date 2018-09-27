@@ -28,14 +28,12 @@ class Field{
     }
 
     shiftColomn(number){
-        for( number; number >= this._column; number = number - this._column){}
+        number = number % this._column;
         document.getElementsByClassName("field__field-square_control-delete-column")[0].style.marginLeft = number * this._sizeSquare + number * 3 + "px";
     }
 
     shiftRow(number){
-        number++;
-        number = Math.ceil( number / this._column );
-        number--;
+        number = Math.ceil( (Number(1) + Number(number) ) / this._column ) - 1;
         document.getElementsByClassName("field__field-square_control-delete-row")[0].style.marginTop = number * this._sizeSquare + number * 3 + 3 + "px";
     }
 
@@ -110,8 +108,8 @@ class Field{
 
     updateField(){
         this._updateWidth = sizeSquare * this._column + this._column * 3;
-        this._positionAddColumn = sizeSquare * this._column + this._column * 3 + 2;
-        this._positionAddRow = sizeSquare * this._row + this._row * 2 + 5;
+        this._positionAddColumn = sizeSquare * this._column + this._column * 3 + 4;
+        this._positionAddRow = sizeSquare * this._row + this._row * 2 + 8;
         document.getElementsByClassName('field__field-view-panel')[0].style.width = this._updateWidth + "px";
         document.getElementsByClassName('field__field-square_control-add-column')[0].style.marginLeft = this._positionAddColumn + "px";
         document.getElementsByClassName('field__field-square_control-add-row')[0].style.marginTop = this._positionAddRow + "px";
@@ -131,8 +129,7 @@ let parent = document.getElementsByClassName("field__field-view-panel")[0];
 
 function handler(event) {
     if (event.type == 'mouseover') {
-        let e = event;
-        let target = e.target || e.srcElement;
+        let target = event.target || event.srcElement;
         for(let i in parent.children) {
             if(parent.children[i] == target){
                 action('mouseScroll', i);
