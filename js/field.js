@@ -41,7 +41,7 @@ class Field{
         this._rowFocus = number;
     }
 
-    addElement(){
+    addLastElement(){
         let Div = document.createElement('div');
         Div.className = "field__field-square";
         let is = document.getElementsByClassName("field__field-view-panel")[0];
@@ -50,8 +50,9 @@ class Field{
 
     addColumn(){
         this._column++;
+        let panel = document.getElementsByClassName("field__field-view-panel")[0];
         for (let i = 0; i < this._row; i++) {
-            this.addElement();
+            panel.children[ this._column + this._column * i - 2 ].insertAdjacentHTML("afterEnd", "<div class='field__field-square'></div>");
         }
         if(this._column == 2){
             document.getElementsByClassName('field__field-square_control-delete-column')[0].style.display="flex";
@@ -62,7 +63,7 @@ class Field{
     addRow(){
         this._row++;
         for (let i = 0; i < this._column; i++) {
-            this.addElement();
+            this.addLastElement();
         }
         if(this._row == 2){
             document.getElementsByClassName('field__field-square_control-delete-row')[0].style.display="flex";
