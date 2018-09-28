@@ -20,21 +20,25 @@ function action(action, number){
 
 
 class Field{
-    constructor(initialColumn, initialRow){
+    constructor(initialColumn, initialRow, sizeSquare){
         this._column = initialColumn;
         this._row = initialRow;
         this._sizeSquare = sizeSquare;
+        this._columnFocus = 0;
+        this._rowFocus = 0;
         this.updateField();
     }
 
     shiftColomn(number){
         number = number % this._column;
         document.getElementsByClassName("field__field-square_control-delete-column")[0].style.marginLeft = number * this._sizeSquare + number * 3 + "px";
+        this._columnFocus = number;
     }
 
     shiftRow(number){
         number = Math.ceil( (Number(1) + Number(number) ) / this._column ) - 1;
         document.getElementsByClassName("field__field-square_control-delete-row")[0].style.marginTop = number * this._sizeSquare + number * 3 + 3 + "px";
+        this._rowFocus = number;
     }
 
     addElement(){
@@ -42,10 +46,6 @@ class Field{
         Div.className = "field__field-square";
         let is = document.getElementsByClassName("field__field-view-panel")[0];
         is.appendChild(Div);
-    }
-
-    deleteElement(){
-        document.getElementsByClassName("field__field-view-panel")[0].lastChild.remove();
     }
 
     addColumn(){
@@ -71,15 +71,12 @@ class Field{
     }
 
     deleteColumn(){
-        if(this._column > 4){
-            for (let i = 0; i < this._row; i++) {
-                this.deleteElement();
-            }
+        for (let i = this._row - 1; i >= 0; i--) {
+            document.getElementsByClassName("field__field-view-panel")[0].children[ Number(i * this._column) + Number(this._columnFocus) ].remove();
         }
-        else{
-            for (let i = 0; i < this._row * 2; i++) {
-                this.deleteElement();
-            }
+        if( this._column == Number(this._columnFocus + 1) ){
+            this._columnFocus--;
+            this.shiftColomn(this._columnFocus);
         }
         this._column--;
         if(this._column == 1){
@@ -89,15 +86,12 @@ class Field{
     }
 
     deleteRow(){
-        if(this._row > 4){
-            for (let i = 0; i < this._column; i++) {
-                this.deleteElement();
-            }
+        for (let i = this._column - 1; i >= 0; i--) {
+            document.getElementsByClassName("field__field-view-panel")[0].children[ Number(this._rowFocus * this._column) + Number(i) ].remove();
         }
-        else{
-            for (let i = 0; i < this._column * 2; i++) {
-                this.deleteElement();
-            }
+        if( this._row == Number(this._rowFocus + 1) ){
+            this._rowFocus--;
+            this.shiftRow(this._rowFocus * this._column);
         }
         this._row--;
         if(this._row == 1){
@@ -124,14 +118,14 @@ const field = new Field(Column, Row, sizeSquare);
 
 
 document.body.onmouseover = document.body.onmouseout = handler;
-let parent = document.getElementsByClassName("field__field-view-panel")[0];
+// let parent = document.getElementsByClassName("field__field-view-panel")[0];
 
 
 function handler(event) {
     if (event.type == 'mouseover') {
         let target = event.target || event.srcElement;
-        for(let i in parent.children) {
-            if(parent.children[i] == target){
+        for(let i in document.getElementsByClassName("field__field-view-panel")[0].children) {
+            if(document.getElementsByClassName("field__field-view-panel")[0].children[i] == target){
                 action('mouseScroll', i);
             }
         }
