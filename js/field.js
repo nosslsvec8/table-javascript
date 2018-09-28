@@ -119,16 +119,18 @@ const field = new Field(Column, Row, sizeSquare);
 
 
 document.body.onmouseover = document.body.onmouseout = handler;
-// let parent = document.getElementsByClassName("field__field-view-panel")[0];
-
 
 function handler(event) {
     if (event.type == 'mouseover') {
         let target = event.target || event.srcElement;
-        for(let i in document.getElementsByClassName("field__field-view-panel")[0].children) {
-            if(document.getElementsByClassName("field__field-view-panel")[0].children[i] == target){
-                action('mouseScroll', i);
-            }
+        addEventListener( target, getIndex(target) );
+    }
+}
+
+function getIndex(target) {
+    for(let i in document.getElementsByClassName("field__field-view-panel")[0].children) {
+        if(document.getElementsByClassName("field__field-view-panel")[0].children[i] == target){
+            return action('mouseScroll', i);
         }
     }
 }
